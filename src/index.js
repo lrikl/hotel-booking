@@ -5,12 +5,14 @@ import ReactDOM from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/Layout.js'; 
 
+import Hotels from './components/pages/hotels/hotels.js';
+
 import './style.scss';
 
 export const menuItems = [
     { path: '/', index: true, textNav: 'Home', component: <div>Home</div>, isMenuItem: true },
     { path: '/about', textNav: 'About', component: <div>About</div>, isMenuItem: true },
-    { path: '/hotels', textNav: 'Hotels', component: <div>Hotels</div> }
+    { path: '/hotels', textNav: 'Hotels', component: <Hotels />, isMenuItem: false }
 ];
 
 const router = createHashRouter([

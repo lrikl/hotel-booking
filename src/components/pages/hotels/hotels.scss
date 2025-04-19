@@ -1,0 +1,12 @@
+.hotels-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hotels-li {
+    width: 30%;
+    border: 1px solid #000;
+    padding: 16px;
+}

@@ -71,16 +71,17 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "styles.css",
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //       {
-        //         from: 'static',
-        //         to: 'static',
-        //         noErrorOnMissing: true 
-        //       },
-        //     ],
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [
+              {
+                from: 'static',
+                to: 'static',
+                noErrorOnMissing: true 
+              },
+            ],
+        }),
     ],
+    devtool: 'source-map',
     optimization: {
         minimizer: [
             new TerserPlugin({

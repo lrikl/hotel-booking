@@ -1,12 +1,15 @@
 'use strict';
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation  } from "react-router-dom";
 import { menuItems } from '../../index.js';
 import "./headerMenu.scss";
 
 export default () => {
 
-    const navItems = menuItems.filter(item => item.isMenuItem === true);
+    const location = useLocation();
+    const currentPathname = location.pathname;
+
+    const navItems = menuItems.filter(item => item.isMenuItem === true || (item.path === '/hotels' && currentPathname === '/hotels'));
 
     return (
         <div className="header">
