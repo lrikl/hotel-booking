@@ -3,8 +3,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
-import Layout from './components/Layout.js'; 
+import { Provider } from 'react-redux';
 
+import store from './store/store.js';
+import Layout from './components/Layout.js'; 
 import Hotels from './components/pages/hotels/hotels.js';
 
 import './style.scss';
@@ -37,5 +39,7 @@ const router = createHashRouter([
 const rootNodeElement = document.querySelector('#main');
 const root = ReactDOM.createRoot(rootNodeElement);
 root.render(
-    <RouterProvider router={router} />
+    <Provider store={store}>
+        <RouterProvider router={router} />
+    </Provider>
 );

@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchHotels } from "../../../slices/hotelsSlice.js";
 
 import "./hotels.scss";
 
 export default () => {
 
-    const [hotelsData, setHotelsData] = useState([])
-
-    async function fetchData() {
-        const resp = await fetch('./static/serverData/db.json')
-        const data = await resp.json();
-        setHotelsData(data.hotels);
-        console.log(data)
-    }
-
+    const hotelsList = useSelector(state => state.hotels.list)
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-        fetchData()
+        dispatch(fetchHotels());
     }, [])
-
 
     return (
        <ul className="hotels-list">
-            {hotelsData.map(({id, name, address, city}) => (
+            {hotelsList.map(({id, name, address, city}) => (
                 <li key={id} className="hotels-li">
                     <div>Hotel: {name}</div>
                     <div>address: {address}</div>
