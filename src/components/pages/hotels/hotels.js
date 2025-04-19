@@ -15,26 +15,66 @@ export default () => {
 
 
     const cityName = searchParams.get('city');
+    const checkIn = searchParams.get('checkIn');
+    const checkOut = searchParams.get('checkOut');
+    const adults = searchParams.get('adults');
+    const children = searchParams.get('children');
+    const rating = searchParams.get('rating');
 
     useEffect(() => {
         dispatch(fetchHotels());
     }, [])
 
     useEffect(() => {
-        const results = hotelsList.filter(hotel => hotel.city.toLowerCase() === cityName);
+        const minRating = rating ? Number(rating) : null;
+        const applyRatingFilter = minRating !== null && !isNaN(minRating);
+        console.log(minRating)
+    
+        const results = hotelsList.filter(hotel => {
+            const cityMatch = hotel.city?.toLowerCase() === cityName?.toLowerCase();
+
+            if (!cityMatch) {
+                return false; 
+            }
+    
+            if (applyRatingFilter) {
+                const ratingMatch = hotel.hotel_rating !== null && hotel.hotel_rating >= minRating;
+                if (!ratingMatch) {
+                    return false; 
+                }
+            }
+    
+            return true;
+        });
+    
         setFilteredHotels(results);
-    }, [cityName, hotelsList])
+    
+    }, [cityName, hotelsList, rating]);
 
     return (
-       <ul className="hotels-list">
-            {filteredHotels.map(({id, name, address, city}) => (
-                <li key={id} className="hotels-li">
-                    <div>Hotel: {name}</div>
-                    <div>address: {address}</div>
-                    <div>city: {city}</div>
-                </li>
-            ))}
+        <div className="hotels-wrap">
+            <h3>Готелі у {cityName} з {checkIn} по {checkOut}
+                { children && <span> Дітей: {children},</span> } 
+                { adults && <span> Тварин: {adults},</span> } 
+                { rating && <span> Рейтинг від: {rating}</span> }
+            </h3>
 
-       </ul>
+            { filteredHotels && filteredHotels.length > 0 ? (
+                <ul className="hotels-list">
+                    {filteredHotels.map(({id, name, address, city, hotel_rating, phone_number}) => (
+                        <li key={id} className="hotels-li">
+                            <div>Hotel: {name}</div>
+                            <div>address: {address} </div>
+                            <div>city: {city} </div>
+                            <div>rating: {hotel_rating}</div>
+                            <div>phone number: {phone_number}</div>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div>Нічого не знайдено</div>
+            )}
+
+        </div>
     )
 }
