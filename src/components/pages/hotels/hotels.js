@@ -28,7 +28,6 @@ export default () => {
     useEffect(() => {
         const minRating = rating ? Number(rating) : null;
         const applyRatingFilter = minRating !== null && !isNaN(minRating);
-        console.log(minRating)
     
         const results = hotelsList.filter(hotel => {
             const cityMatch = hotel.city?.toLowerCase() === cityName?.toLowerCase();

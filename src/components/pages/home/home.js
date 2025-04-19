@@ -13,7 +13,7 @@ export default () => {
     const [checkOutDate, setCheckOutDate] = useState('');
     const [numbAdults, setNumbAdults] = useState('');
     const [numbChildren, setNumbChildren] = useState('');
-    const [hotelsRating, setHotelsRating] = useState(0);
+    const [hotelsRating, setHotelsRating] = useState('');
     const [seachActive, setSeachActive] = useState(false);
 
     async function fetchDestinationList() {
@@ -35,7 +35,7 @@ export default () => {
                 checkOut: checkOutDate,
                 adults: numbAdults,
                 children: numbChildren,
-                rating: hotelsRating.toString()
+                rating: hotelsRating
             }); 
 
             navigate(`/hotels?${searchParams.toString()}`); // редирект
@@ -126,7 +126,7 @@ export default () => {
                     type="number"
                     id="hotels-rating"
                     value={hotelsRating}
-                    min="0"
+                    min="1"
                     max="5"
                     step="0.5"
                     onChange={(e) => setHotelsRating(e.target.value)}
