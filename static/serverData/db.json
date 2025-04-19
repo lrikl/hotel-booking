@@ -12,96 +12,91 @@
     },
     {
       "id": 3,
-      "value": 5034,
-      "label": "Boston"
-    },
-    {
-      "id": 4,
       "value": 34501,
       "label": "Celebration"
     },
     {
-      "id": 5,
+      "id": 4,
       "value": 40418,
       "label": "Edgewood"
     },
     {
-      "id": 6,
+      "id": 5,
       "value": 39505,
       "label": "Gotha"
     },
     {
-      "id": 7,
+      "id": 6,
       "value": 21017,
       "label": "Haines City"
     },
     {
-      "id": 8,
+      "id": 7,
       "value": 10,
       "label": "Los Angeles"
     },
     {
-      "id": 9,
+      "id": 8,
       "value": 72,
       "label": "Miami"
     },
     {
-      "id": 10,
+      "id": 9,
       "value": 18421,
       "label": "Montverde"
     },
     {
-      "id": 11,
+      "id": 10,
       "value": 54,
       "label": "New York"
     },
     {
-      "id": 12,
+      "id": 11,
       "value": 23767,
       "label": "Ocoee"
     },
     {
-      "id": 13,
+      "id": 12,
       "value": 32190,
       "label": "Orlando area"
     },
     {
-      "id": 14,
+      "id": 13,
       "value": 11531,
       "label": "Poinciana"
     },
     {
-      "id": 15,
+      "id": 14,
       "value": 10772,
       "label": "Polk City"
     },
     {
-      "id": 16,
+      "id": 15,
       "value": 17969,
       "label": "San Francisco Bay"
     },
     {
-      "id": 17,
+      "id": 16,
       "value": 17365,
       "label": "St. Cloud"
     },
     {
-      "id": 18,
+      "id": 17,
       "value": 24263,
       "label": "Walt Disney World® Resort"
     },
     {
-      "id": 19,
+      "id": 18,
       "value": 277,
       "label": "Washington"
     },
     {
-      "id": 20,
+      "id": 19,
       "value": 49764,
       "label": "Windermere"
     },
     {
-      "id": 21,
+      "id": 20,
       "value": 22282,
       "label": "Winter Garden"
     }

@@ -103,3 +103,10 @@ textarea,
 button  {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+
+.main-content {
+    max-width: 1520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(12px, 4vw, 48px) 0;
+}
