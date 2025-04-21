@@ -59,12 +59,12 @@ export default () => {
         checkInDate: Yup.date()
             .nullable() // важливо для полів дати, щоб дозволити порожні початкові значення
             .typeError('Invalid date')
-            .required('Arrival date is required')
+            .required('Check In Date is required')
             .min(new Date(new Date().setHours(0, 0, 0, 0)), 'Check-in date cannot be in the past'),
         checkOutDate: Yup.date()
             .nullable()
             .typeError('Invalid date')
-            .required('Departure date is required')
+            .required('Check Out Date is required')
             .min(
                 Yup.ref('checkInDate'), // посилання значення іншого поля для порівняння
                 'The departure date cannot be earlier than the arrival date.'
@@ -118,7 +118,7 @@ export default () => {
                                     name="selectedCity" 
                                     as={Select}       // as= це зв'язка з компонентом mui
                                     labelId="city-select-label"
-                                    label="Виберіть місто"
+                                    label="Destination"
                                     
                                 >
                                     {destinationList.map(({ value, label }) => (
@@ -141,7 +141,7 @@ export default () => {
                                         name: "checkInDate", 
                                         error: formik.touched.checkInDate && Boolean(formik.errors.checkInDate),
                                         helperText: formik.touched.checkInDate && formik.errors.checkInDate,
-                                        onBlur: () => formik.setFieldTouched('checkInDate', true), 
+                                        onBlur: () => formik.setFieldTouched('checkInDate', true, true), // встановити touched у true та запустити валідацію
                                     },
                                 }}
                             />
@@ -157,7 +157,7 @@ export default () => {
                                         name: "checkOutDate",
                                         error: formik.touched.checkOutDate && Boolean(formik.errors.checkOutDate),
                                         helperText: formik.touched.checkOutDate && formik.errors.checkOutDate,
-                                        onBlur: () => formik.setFieldTouched('checkOutDate', true),
+                                        onBlur: () => formik.setFieldTouched('checkOutDate', true, true),
                                     },
                                 }}
 
