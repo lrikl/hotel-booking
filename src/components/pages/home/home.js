@@ -25,7 +25,7 @@ export default () => {
     const [destinationList, setDestinationList] = useState([]);
     const navigate = useNavigate();
 
-    // початкові значення для Formik
+    // початкові значення для Formik, стан зберігається всередені форміка, доступ отримаємо через рендер-проп {(formik) => ...}
     const initialValues = {
         selectedCity: '',
         checkInDate: null,
@@ -58,15 +58,15 @@ export default () => {
             .required('City is a required field'),
         checkInDate: Yup.date()
             .nullable() // важливо для полів дати, щоб дозволити порожні початкові значення
-            .typeError('Invalid date')
             .required('Check In Date is required')
+            .typeError('Invalid date')
             .min(new Date(new Date().setHours(0, 0, 0, 0)), 'Check-in date cannot be in the past'),
         checkOutDate: Yup.date()
             .nullable()
-            .typeError('Invalid date')
             .required('Check Out Date is required')
+            .typeError('Invalid date')
             .min(
-                Yup.ref('checkInDate'), // посилання значення іншого поля для порівняння
+                Yup.ref('checkInDate'), // посилання значення з іншого поля для порівняння
                 'The departure date cannot be earlier than the arrival date.'
             ),
         numbAdults: Yup.number()
@@ -84,6 +84,11 @@ export default () => {
 
     const searchSubmit = ({ selectedCity, checkInDate, checkOutDate, numbAdults, numbChildren, hotelsRating }) => {
         const selectedDestination = destinationList.find(dest => dest.label === selectedCity);
+
+        if (!selectedDestination) {
+            console.error("Selected destination not found in the list:", selectedCity);
+            return;
+        }
 
         const searchParams = new URLSearchParams({
             city: selectedDestination.label.toLowerCase(),
@@ -141,7 +146,7 @@ export default () => {
                                         name: "checkInDate", 
                                         error: formik.touched.checkInDate && Boolean(formik.errors.checkInDate),
                                         helperText: formik.touched.checkInDate && formik.errors.checkInDate,
-                                        onBlur: () => formik.setFieldTouched('checkInDate', true, true), // встановити touched у true та запустити валідацію
+                                        onBlur: () => formik.setFieldTouched('checkInDate', true), 
                                     },
                                 }}
                             />
@@ -157,7 +162,7 @@ export default () => {
                                         name: "checkOutDate",
                                         error: formik.touched.checkOutDate && Boolean(formik.errors.checkOutDate),
                                         helperText: formik.touched.checkOutDate && formik.errors.checkOutDate,
-                                        onBlur: () => formik.setFieldTouched('checkOutDate', true, true),
+                                        onBlur: () => formik.setFieldTouched('checkOutDate', true),
                                     },
                                 }}
 
