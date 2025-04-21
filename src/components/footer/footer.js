@@ -11,7 +11,7 @@ import { Email, Phone, GitHub } from "@mui/icons-material";
 
 export default () => {
   return (
-    <Container maxWidth="lg" sx={{ my: 5 }}>
+    <Container sx={{ my: 5 }}>
       <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
 
         <Box>
