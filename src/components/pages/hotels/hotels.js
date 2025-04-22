@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHotels } from "../../../slices/hotelsSlice.js";
+import { fetchBookingData } from "../../../slices/fetchDataThunks.js";
 import { useSearchParams } from 'react-router-dom'; 
 
 import "./hotels.scss";
@@ -22,7 +22,7 @@ export default () => {
     const rating = searchParams.get('rating');
 
     useEffect(() => {
-        dispatch(fetchHotels());
+        dispatch(fetchBookingData());
     }, [])
 
     useEffect(() => {

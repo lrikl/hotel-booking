@@ -20,7 +20,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs'; 
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDestination } from "../../../slices/destinationSlice";
+import { fetchBookingData } from "../../../slices/fetchDataThunks.js";
 
 import './home.scss'; 
 
@@ -39,7 +39,7 @@ export default () => {
     };
 
     useEffect(() => {
-        dispatch(fetchDestination());
+        dispatch(fetchBookingData());
     }, [])
 
     const validationSchema = Yup.object().shape({

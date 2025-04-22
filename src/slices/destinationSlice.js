@@ -1,16 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from 'axios';
-
-export const fetchDestination = createAsyncThunk('destination/fetchDestination', async () => {
-    try {
-        const response = await axios.get('./static/serverData/db.json');
-        return response.data;
-
-    } catch (error) {
-        console.error('Fetch destination failed: ', error)
-        throw error;
-    }
-})
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchBookingData } from "./fetchDataThunks.js";
 
 const destinationSlice = createSlice({
     name: 'destination',
@@ -19,10 +8,10 @@ const destinationSlice = createSlice({
         isLoading: false
     },
     extraReducers: builder => {
-        builder.addCase(fetchDestination.pending, (prevState) => {
+        builder.addCase(fetchBookingData.pending, (prevState) => {
             prevState.isLoading = true;
         });
-        builder.addCase(fetchDestination.fulfilled, (prevState, {payload}) => {
+        builder.addCase(fetchBookingData.fulfilled, (prevState, {payload}) => {
             prevState.list = payload.destination;
             prevState.isLoading = false;
         });
