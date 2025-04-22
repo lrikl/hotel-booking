@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik'; 
 import * as Yup from 'yup'; 
@@ -19,11 +19,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs'; 
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDestination } from "../../../slices/destinationSlice";
+
 import './home.scss'; 
 
 export default () => {
-    const [destinationList, setDestinationList] = useState([]);
     const navigate = useNavigate();
+    const destinationList = useSelector(state => state.destination.list)
+    const dispatch = useDispatch();
 
     const initialValues = {  // початкові значення для Formik, стан зберігається всередені форміка, доступ отримаємо через рендер-проп {(formik) => ...}
         selectedCity: '',
@@ -34,23 +38,9 @@ export default () => {
         hotelsRating: '',
     };
 
-    async function fetchDestinationList() {
-        try { 
-            const resp = await fetch('./static/serverData/db.json');
-            if (!resp.ok) {
-                throw new Error(`HTTP error! status: ${resp.status}`);
-            }
-            const data = await resp.json();
-            setDestinationList(data.destination || []);
-        } catch (error) {
-            console.error("Failed to fetch destinations:", error);
-            setDestinationList([]);
-        }
-    }
-
     useEffect(() => {
-        fetchDestinationList();
-    }, []);
+        dispatch(fetchDestination());
+    }, [])
 
     const validationSchema = Yup.object().shape({
         selectedCity: Yup.string()
