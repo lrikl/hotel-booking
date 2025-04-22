@@ -9,7 +9,7 @@ import store from './store/store.js';
 import Layout from './components/Layout.js'; 
 import Hotels from './components/pages/hotels/hotels.js';
 import Home from './components/pages/home/home.js';
-import About from './components/pages/about.js';
+import About from './components/pages/about/about.js';
 
 import './style.scss';
 
@@ -42,6 +42,6 @@ const rootNodeElement = document.querySelector('#main');
 const root = ReactDOM.createRoot(rootNodeElement);
 root.render(
     <Provider store={store}>
-        <RouterProvider router={router} />
+            <RouterProvider router={router} />
     </Provider>
 );

@@ -16,6 +16,7 @@ body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     margin: 0;
     color: var(--dark-color);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .container {
@@ -52,72 +53,10 @@ h2 {
 
 body.dark-theme {
     background-color: #333;
-    --white-color: #333;
     --dark-color: #fff; 
-    --lt-gray-color: #000;
-    --blue-color: gray;
-    --bg-gradient: gray;
-
-    .todo-block,
-    .timer-block  {
-        background: linear-gradient(rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.082));
-        background-color: #121212;
-    }
-    
-    .save-btn,
-    .cancel-btn,
-    .check-all,
-    .delete-btn,
-    .btn-clear,
-    .add-btn {
-        background-color: #000;
-        color: #fff;
-    }
-
-    .todo-input,
-    .todo-input::placeholder {
-        color: #fff;
-    }
-
-    .btn {
-        border-color: #fff;
-    }
-
-    .todo-item {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .check-bg {
-        background: rgba(255, 255, 255, 0.3);
-    }
-
-    .weather-btn,
-    .todo-input {
-        background: gray;
-    }
-    
-}
-
-img {
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-button {
-    display: block;
-    line-height: 1;
-    user-select: none;
-    
-    &:hover {
-        box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.3);
+    .header,
+    .footer {
+        background-color: #484848;
     }
 }
 
-input,
-textarea,
-button  {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-}

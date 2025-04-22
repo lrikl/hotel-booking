@@ -54,9 +54,9 @@ export default () => {
                                 component={NavLink}
                                 to={path}
                                 end={path === '/'}  // 'end' prop важливий для NavLink на головній сторінці ('/'), щоб він не був активним на інших шляхах 
-                                sx={{
+                                sx={(theme) => ({
                                     backgroundColor: '#fc9703',
-                                    color: '#FFFFFF',
+                                    color: theme.palette.mode === 'dark' ? '#000000' : '#FFFFFF',
                                     borderRadius: '4px', 
                                     padding: '12px 16px', 
                                     minHeight: 'auto', 
@@ -73,7 +73,7 @@ export default () => {
 
                                     '&.Mui-selected': {
                                         backgroundColor:'rgb(255, 179, 64)', 
-                                        color: '#FFFFFF',
+                                        color: theme.palette.mode === 'dark' ? '#000000' : '#FFFFFF',
                                     },
 
                                      '@media (max-width:767px)': {
@@ -81,7 +81,7 @@ export default () => {
                                         width: { xs: '100%', sm: 'auto'}, 
                                         maxWidth: { xs: '280px', sm: 'none' } 
                                     }
-                                }}
+                                })}
                             />
                         ))}
                     </Tabs>
