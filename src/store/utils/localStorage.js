@@ -1,6 +1,6 @@
 const STORAGE_KEY = 'BOOKING_DATA_STORAGE';
 
-export const loadState = () => {
+export const loadStorageState = () => {
   try {
     const serializedState = localStorage.getItem(STORAGE_KEY);
     if (serializedState === null) {
@@ -8,7 +8,7 @@ export const loadState = () => {
     }
     const parsedState = JSON.parse(serializedState);
     return { 
-      isTheme: parsedState.bookingTheme
+      themeState: {isTheme: parsedState.bookingTheme}
     };
 
   } catch (error) {
@@ -17,7 +17,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state) => { 
+export const saveStorageState = (state) => { 
   try {
     const stateToSave = { 
       bookingTheme: state.themeState.isTheme

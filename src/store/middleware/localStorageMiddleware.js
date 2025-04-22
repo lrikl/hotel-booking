@@ -1,11 +1,11 @@
-import { saveState } from '../utils/localStorage.js';
+import { saveStorageState } from '../utils/localStorage.js';
 
 const localStorageMiddleware = store => next => action => {
   const result = next(action);
 
   if (action.type.startsWith('themeState/')) { 
     const state = store.getState(); 
-    saveState(state); 
+    saveStorageState(state); 
   }
 
   return result;

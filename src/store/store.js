@@ -4,21 +4,10 @@ import destinationState from '../slices/destinationSlice.js';
 import logger from 'redux-logger';
 import themeState  from '../slices/themeSlice.js';
 import localStorageMiddleware from './middleware/localStorageMiddleware.js';
-import { loadState } from './utils/localStorage.js';
+import { loadStorageState } from './utils/localStorage.js';
 
-const loadedThemeState = loadState();
 
-const preloadedState = {
-  hotels: {
-      list: [],
-      isLoading: false
-  },
-  destination: {
-    list: [],
-    isLoading: false
-  },
-  themeState: loadedThemeState !== undefined ? loadedThemeState : undefined
-};
+const preloadedState = loadStorageState()
 
 export const store = configureStore({
   reducer: {
