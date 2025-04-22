@@ -1,8 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
 
 export const fetchDestination = createAsyncThunk('destination/fetchDestination', async () => {
-    const resp = await fetch('./static/serverData/db.json');
-    return await resp.json();
+    try {
+        const response = await axios.get('./static/serverData/db.json');
+        return response.data;
+
+    } catch (error) {
+        console.error('Fetch destination failed: ', error)
+        throw error;
+    }
 })
 
 const destinationSlice = createSlice({

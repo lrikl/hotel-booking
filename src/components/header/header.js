@@ -16,7 +16,7 @@ export default () => {
     const location = useLocation();
 
     const navItems = menuItems.filter(item => item.isMenuItem === true);
-    const currentPath = menuItems.find(item => item.path === location.pathname) ? location.pathname : false;
+    const currentPath = navItems.find(item => item.path === location.pathname) ? location.pathname : false;
 
     return (
         <Box className="header" component="header">
