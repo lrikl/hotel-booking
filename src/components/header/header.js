@@ -14,9 +14,8 @@ import "./header.scss";
 export default () => {
 
     const location = useLocation();
-    const currentPathname = location.pathname;
 
-    const navItems = menuItems.filter(item => item.isMenuItem === true || (item.path === '/hotels' && currentPathname === '/hotels'));
+    const navItems = menuItems.filter(item => item.isMenuItem === true);
     const currentPath = menuItems.find(item => item.path === location.pathname) ? location.pathname : false;
 
     return (
