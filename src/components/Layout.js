@@ -7,11 +7,13 @@ import ErrorBoundary from './ErrorBoundary.js';
 const Layout = () => {
     return (
         <ErrorBoundary>
-            <Header />
-            <main className="main-content"> 
-                <Outlet />
-            </main>
-            <Footer />
+            <div className="container">
+                <Header />
+                <main className="main-content"> 
+                    <Outlet />
+                </main>
+                <Footer />
+            </div>
         </ErrorBoundary>
     );
 };

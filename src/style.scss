@@ -15,9 +15,20 @@
 body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     margin: 0;
-    padding: clamp(12px, 4vw, 48px);
     color: var(--dark-color);
-    transition: 0.3s ease;
+}
+
+.container,
+.main-content  {
+    max-width: 1500px;
+    width: 100%;
+    padding: clamp(12px, 4vw, 48px);
+    margin: 0 auto;
+}
+
+.main-content {
+    max-width: 1200px;
+    padding: clamp(12px, 4vw, 48px) 16px;
 }
 
 ul {
@@ -104,11 +115,4 @@ input,
 textarea,
 button  {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-}
-
-.main-content {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: clamp(12px, 4vw, 48px) 0;
 }

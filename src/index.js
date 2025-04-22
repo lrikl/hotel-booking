@@ -9,12 +9,13 @@ import store from './store/store.js';
 import Layout from './components/Layout.js'; 
 import Hotels from './components/pages/hotels/hotels.js';
 import Home from './components/pages/home/home.js';
+import About from './components/pages/about.js';
 
 import './style.scss';
 
 export const menuItems = [
     { path: '/', index: true, textNav: 'Home', component: <Home />, isMenuItem: true },
-    { path: '/about', textNav: 'About', component: <div>About</div>, isMenuItem: true },
+    { path: '/about', textNav: 'About', component: <About />, isMenuItem: true },
     { path: '/hotels', textNav: 'Hotels', component: <Hotels />, isMenuItem: false }
 ];
 
