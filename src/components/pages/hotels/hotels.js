@@ -52,26 +52,44 @@ export default () => {
 
     return (
         <div className="hotels-wrap">
-            <h3>Готелі у {cityName} з {checkIn} по {checkOut}
-                { children && <span> Дітей: {children},</span> } 
-                { adults && <span> Тварин: {adults},</span> } 
-                { rating && <span> Рейтинг від: {rating}</span> }
-            </h3>
 
             { filteredHotels && filteredHotels.length > 0 ? (
-                <ul className="hotels-list">
-                    {filteredHotels.map(({id, name, address, city, hotel_rating, phone_number}) => (
-                        <li key={id} className="hotels-li">
-                            <div>Hotel: {name}</div>
-                            <div>address: {address} </div>
-                            <div>city: {city} </div>
-                            <div>rating: {hotel_rating}</div>
-                            <div>phone number: {phone_number}</div>
-                        </li>
-                    ))}
-                </ul>
+                <>
+                    <h3>Hotels in {cityName} from {checkIn} to {checkOut}
+                        { adults && <span> Adults: {adults},</span> } 
+                        { children && <span> Children: {children},</span> } 
+                        { rating && <span> Rating from: {rating}</span> }
+                    </h3>
+
+                    <ul className="hotels-list">
+                        {filteredHotels.map(({id, name, address, city, hotel_rating, phone_number}) => (
+                            <li key={id} className="hotels-li">
+                                <div>Hotel: {name}</div>
+                                <div>Address: {address} </div>
+                                <div>City: {city} </div>
+                                <div>Rating: {hotel_rating}</div>
+                                {phone_number && <div>Phone Number: {phone_number}</div>}
+                            </li>
+                        ))}
+                    </ul>
+                </>
             ) : (
-                <div>Нічого не знайдено</div>
+                <>
+                    <h3>Nothing was found for the specified parameters. List of all hotels:</h3>
+                    { hotelsList.length > 0 && (
+                        <ul className="hotels-list">
+                            {hotelsList.map(({id, name, address, city, hotel_rating, phone_number}) => (
+                                <li key={id} className="hotels-li">
+                                    <div>Hotel: {name}</div>
+                                    <div>Address: {address} </div>
+                                    <div>City: {city} </div>
+                                    <div>Rating: {hotel_rating}</div>
+                                    {phone_number && <div>Phone Number: {phone_number}</div>}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </>
             )}
 
         </div>

@@ -25,8 +25,7 @@ export default () => {
     const [destinationList, setDestinationList] = useState([]);
     const navigate = useNavigate();
 
-    // початкові значення для Formik, стан зберігається всередені форміка, доступ отримаємо через рендер-проп {(formik) => ...}
-    const initialValues = {
+    const initialValues = {  // початкові значення для Formik, стан зберігається всередені форміка, доступ отримаємо через рендер-проп {(formik) => ...}
         selectedCity: '',
         checkInDate: null,
         checkOutDate: null,
@@ -70,11 +69,11 @@ export default () => {
                 'The departure date cannot be earlier than the arrival date.'
             ),
         numbAdults: Yup.number()
-            .min(0, 'min 0')
+            .min(1, 'min 1')
             .integer('enter an integer')
             .max(10, 'max 10'),
         numbChildren: Yup.number()
-            .min(0, 'min 0')
+            .min(0, 'not less than 0')
             .integer('enter an integer')
             .max(10, 'max 10'),
         hotelsRating: Yup.number()
@@ -87,6 +86,7 @@ export default () => {
 
         if (!selectedDestination) {
             console.error("Selected destination not found in the list:", selectedCity);
+            alert('Selected destination not found');
             return;
         }
 
@@ -112,16 +112,19 @@ export default () => {
                     validateOnChange={true}
                     validateOnBlur={true} 
                 >
-                    {(formik) => ( // рендер-функція Formik, що надає доступ до стану форми {} formik
+                    {(formik) => { // рендер-функція Formik, що надає доступ до стану форми {} formik
+                        const { touched, errors, values } = formik;
+
+                        return (
                         <Form className="hotels-form">
                             <FormControl
                                 className="form-main-field"
-                                error={formik.touched.selectedCity && Boolean(formik.errors.selectedCity)} 
+                                error={touched.selectedCity && Boolean(errors.selectedCity)} 
                             >
                                 <InputLabel id="city-select-label">Destination</InputLabel>
                                 <Field
                                     name="selectedCity" 
-                                    as={Select}       // as= це зв'язка з компонентом mui
+                                    as={Select}       // as= зв'язка з компонентом mui
                                     labelId="city-select-label"
                                     label="Destination"
                                     
@@ -131,21 +134,21 @@ export default () => {
                                     ))}
                                 </Field>
                                 <FormHelperText>
-                                    {formik.touched.selectedCity && formik.errors.selectedCity}
+                                    {touched.selectedCity && errors.selectedCity}
                                 </FormHelperText>
                             </FormControl>
 
                             <DatePicker
                                 label="Check In"
-                                value={formik.values.checkInDate}
+                                value={values.checkInDate}
                                 onChange={(newValue) => formik.setFieldValue('checkInDate', newValue)}
                                 minDate={dayjs().startOf('day')} // min дата сьогодні
                                 slotProps={{
                                     textField: {
                                         className: "form-main-field", 
                                         name: "checkInDate", 
-                                        error: formik.touched.checkInDate && Boolean(formik.errors.checkInDate),
-                                        helperText: formik.touched.checkInDate && formik.errors.checkInDate,
+                                        error: touched.checkInDate && Boolean(errors.checkInDate),
+                                        helperText: touched.checkInDate && errors.checkInDate,
                                         onBlur: () => formik.setFieldTouched('checkInDate', true), 
                                     },
                                 }}
@@ -153,15 +156,15 @@ export default () => {
 
                             <DatePicker
                                 label="Check Out"
-                                value={formik.values.checkOutDate}
+                                value={values.checkOutDate}
                                 onChange={(newValue) => formik.setFieldValue('checkOutDate', newValue)}
-                                minDate={formik.values.checkInDate ? dayjs(formik.values.checkInDate).add(1, 'day') : dayjs().startOf('day').add(1, 'day')} //min дата завтра від checkInDate
+                                minDate={values.checkInDate ? dayjs(values.checkInDate).add(1, 'day') : dayjs().startOf('day').add(1, 'day')} //min дата завтра від checkInDate
                                 slotProps={{
                                     textField: {
                                         className: "form-main-field",
                                         name: "checkOutDate",
-                                        error: formik.touched.checkOutDate && Boolean(formik.errors.checkOutDate),
-                                        helperText: formik.touched.checkOutDate && formik.errors.checkOutDate,
+                                        error: touched.checkOutDate && Boolean(errors.checkOutDate),
+                                        helperText: touched.checkOutDate && errors.checkOutDate,
                                         onBlur: () => formik.setFieldTouched('checkOutDate', true),
                                     },
                                 }}
@@ -174,9 +177,9 @@ export default () => {
                                 name="numbAdults" 
                                 label="Adults"
                                 type="number"
-                                inputProps={{ min: "0", max: "10" }} 
-                                error={formik.touched.numbAdults && Boolean(formik.errors.numbAdults)}
-                                helperText={formik.touched.numbAdults && formik.errors.numbAdults}
+                                inputProps={{ min: "1", max: "10" }} 
+                                error={touched.numbAdults && Boolean(errors.numbAdults)}
+                                helperText={touched.numbAdults && errors.numbAdults}
                             />
 
                             <Field
@@ -186,8 +189,8 @@ export default () => {
                                 label="Children"
                                 type="number"
                                 inputProps={{ min: "0", max: "10" }}
-                                error={formik.touched.numbChildren && Boolean(formik.errors.numbChildren)}
-                                helperText={formik.touched.numbChildren && formik.errors.numbChildren}
+                                error={touched.numbChildren && Boolean(errors.numbChildren)}
+                                helperText={touched.numbChildren && errors.numbChildren}
                             />
 
                             <Field
@@ -196,9 +199,9 @@ export default () => {
                                 name="hotelsRating"
                                 label="Rating from"
                                 type="number"
-                                inputProps={{ min: "1", max: "5", step: "0.5" }}
-                                error={formik.touched.hotelsRating && Boolean(formik.errors.hotelsRating)}
-                                helperText={formik.touched.hotelsRating && formik.errors.hotelsRating}
+                                inputProps={{ min: "1", max: "5", step: "0.1" }}
+                                error={touched.hotelsRating && Boolean(errors.hotelsRating)}
+                                helperText={touched.hotelsRating && errors.hotelsRating}
                             />
 
                             <Button
@@ -219,7 +222,7 @@ export default () => {
                             </Button>
 
                         </Form>
-                    )}
+                    )}}
                 </Formik>
             </div>
 
