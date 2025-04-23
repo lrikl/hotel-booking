@@ -1,0 +1,400 @@
+{
+    "hotels": [
+        {
+            "id": 5018105,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 11003176,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 747134,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 720550,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 797074,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 742987,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 743452,
+            "imgUrl": "./static/images/hotel-img-1.webp"
+        },
+        {
+            "id": 260469,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 740399,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 5018104,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 792811,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 804220,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 5018107,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 700390,
+            "imgUrl": "./static/images/hotel-img-1.webp"
+        },
+        {
+            "id": 742946,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 776932,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 741741,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 716815,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 802583,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 5018106,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 751736,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 386689,
+            "imgUrl": "./static/images/hotel-img-1.webp"
+        },
+        {
+            "id": 567484,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 677300,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 820605,
+            "imgUrl": "./static/images/hotel-img-3.webp"
+        },
+        {
+            "id": 731189,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 721848,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677341,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677347,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 810445,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 677372,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 822534,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 793847,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677396,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677411,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 677410,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677425,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 677426,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 721859,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 801610,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677429,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 677433,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677449,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 677450,
+            "imgUrl": "./static/images/hotel-img-3.webp"
+        },
+        {
+            "id": 677452,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 677455,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 677470,
+            "imgUrl": "./static/images/hotel-img-3.webp"
+        },
+        {
+            "id": 677476,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 677477,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 677480,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 677481,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677519,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 677520,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 705227,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 696618,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 677526,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 677527,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 677528,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 677537,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 696614,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 677694,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 677550,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 787996,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 731262,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 677559,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 677565,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 677571,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 724715,
+            "imgUrl": "./static/images/hotel-img-3.webp"
+        },
+        {
+            "id": 677574,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 677577,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 757401,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 2000001,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 2000002,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 2000003,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 2000004,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 2000005,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000006,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000007,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 2000008,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 2000009,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 2000010,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 2000011,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000012,
+            "imgUrl": "./static/images/hotel-img-7.webp"
+        },
+        {
+            "id": 2000013,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000014,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000015,
+            "imgUrl": "./static/images/hotel-img-1.webp"
+        },
+        {
+            "id": 2000016,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 2000017,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 2000018,
+            "imgUrl": "./static/images/hotel-img-4.webp"
+        },
+        {
+            "id": 2000019,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 2000020,
+            "imgUrl": "./static/images/hotel-img-5.webp"
+        },
+        {
+            "id": 2000021,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 2000022,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        },
+        {
+            "id": 2000023,
+            "imgUrl": "./static/images/hotel-img-2.webp"
+        },
+        {
+            "id": 2000024,
+            "imgUrl": "./static/images/hotel-img-10.webp"
+        },
+        {
+            "id": 2000025,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000026,
+            "imgUrl": "./static/images/hotel-img-8.webp"
+        },
+        {
+            "id": 2000027,
+            "imgUrl": "./static/images/hotel-img-9.webp"
+        },
+        {
+            "id": 2000028,
+            "imgUrl": "./static/images/hotel-img-6.webp"
+        }
+    ]
+}

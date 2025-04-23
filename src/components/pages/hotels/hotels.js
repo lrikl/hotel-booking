@@ -53,43 +53,33 @@ export default () => {
     return (
         <div className="hotels-wrap">
 
-            { filteredHotels && filteredHotels.length > 0 ? (
+            { filteredHotels.length > 0 ? (
                 <>
-                    <h3>Hotels in {cityName} from {checkIn} to {checkOut}
-                        { adults && <span> Adults: {adults},</span> } 
-                        { children && <span> Children: {children},</span> } 
-                        { rating && <span> Rating from: {rating}</span> }
-                    </h3>
+                    <div className="hotels-informations">
+                        <h2 className="hotels-title">Hotels in <span className="sity-name">{cityName}</span></h2>
+                        <div className="hotels-date">From <span className="orange-color">{checkIn}</span> to <span className="orange-color">{checkOut}</span></div>
+                        { adults && <div className="hotels-adults">Adults: <span className="orange-color">{adults}</span></div>}
+                        { children && <div className="hotels-children">Children: <span className="orange-color">{children}</span></div>}
+                        { rating && <div className="hotels-rating">Rating from: <span className="orange-color">{rating}</span></div>}
+                    </div>
 
                     <ul className="hotels-list">
-                        {filteredHotels.map(({id, name, address, city, hotel_rating, phone_number}) => (
-                            <li key={id} className="hotels-li">
-                                <div>Hotel: {name}</div>
-                                <div>Address: {address} </div>
-                                <div>City: {city} </div>
-                                <div>Rating: {hotel_rating}</div>
-                                {phone_number && <div>Phone Number: {phone_number}</div>}
+                        {filteredHotels.map(({id, name, address, city, hotel_rating, phone_number, imgUrl}) => (
+                            <li key={id} className='hotels-item'>
+                                <div className="hotels-item-img"><img className="" alt="hotel-img" src={imgUrl} /></div>
+                                <div>
+                                    <h4 className="hotels-item-title">{name}</h4>
+                                    <div>Address: {address} </div>
+                                    <div>City: {city} </div>
+                                    <div>Rating: {hotel_rating}</div>
+                                    {phone_number && <div>Phone Number: {phone_number}</div>}
+                                </div>
                             </li>
                         ))}
                     </ul>
                 </>
             ) : (
-                <>
-                    <h3>Nothing was found for the specified parameters. List of all hotels:</h3>
-                    { hotelsList.length > 0 && (
-                        <ul className="hotels-list">
-                            {hotelsList.map(({id, name, address, city, hotel_rating, phone_number}) => (
-                                <li key={id} className="hotels-li">
-                                    <div>Hotel: {name}</div>
-                                    <div>Address: {address} </div>
-                                    <div>City: {city} </div>
-                                    <div>Rating: {hotel_rating}</div>
-                                    {phone_number && <div>Phone Number: {phone_number}</div>}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </>
+                <h3>Nothing was found for the specified parameters.</h3>
             )}
 
         </div>

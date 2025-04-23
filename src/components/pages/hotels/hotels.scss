@@ -1,19 +1,47 @@
+
+.hotels-title {
+    font-size: clamp(24px, 3vw, 36px);
+    margin-bottom: 8px;
+}
+
+.sity-name {
+    text-transform: capitalize;
+    color: var(--orange-color);
+}
+
+.hotels-informations {
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
 .hotels-list {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
 }
 
-.hotels-li {
-    width: 30%;
-    border: 1px solid #000;
+.hotels-item {
+    width: calc((100% - 2 * 20px) / 3);
+    font-size: clamp(12px, 1.5vw, 16px);
+    color: var(--gray-color);
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
     padding: 16px;
 }
 
-.hotels-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.hotels-item-title {
+    font-size: clamp(18px, 2vw, 22px);
+    margin-bottom: 16px;
+    color: var(--dark-color);
+}
+
+.hotels-item-img {
+    height: 240px;
+}
+
+.hotels-item-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
