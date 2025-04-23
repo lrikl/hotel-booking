@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBookingData } from "../../../slices/fetchDataThunks.js";
 import { useNavigate, useSearchParams } from 'react-router-dom'; 
 import { setFilteredList } from "../../../slices/hotelsSlice.js";
+import { addFavorite, removeFavorite } from "../../../slices/favoritesSlice.js";
 
 import "./hotels.scss";
+import { Button, CircularProgress, Grid } from "@mui/material";
 
 export default () => {
 
@@ -13,6 +15,8 @@ export default () => {
 
     const filteredHotels = useSelector(state => state.hotels.filteredList)
     const hotelsList = useSelector(state => state.hotels.list)
+    const isLoading = useSelector(state => state.hotels.isLoading)
+    const favoritesList = useSelector(state => state.favorite.favoriteList);
     const dispatch = useDispatch();
 
     // валідація параметрів пошуку------
@@ -98,10 +102,23 @@ export default () => {
     
     }, [city, hotelsList, rating]);
 
+    const handleAddFavorite = (hotel) => {
+        dispatch(addFavorite(hotel));
+    };
+
+    const handleRemoveFavorite = (hotelId) => {
+        dispatch(removeFavorite(hotelId));
+    };
+
     return (
         <div className="hotels-wrap">
 
-            { filteredHotels.length > 0 ? (
+            {isLoading ? (
+                <Grid container justifyContent="center" sx={{ mt: 2 }}>
+                    <CircularProgress sx={{color: '#fc9703'}} />
+                </Grid>
+
+            ) : (filteredHotels.length > 0 ? (
                 <>
                     <div className="hotels-informations">
                         <h2 className="hotels-title">Hotels in <span className="sity-name">{city}</span></h2>
@@ -112,23 +129,45 @@ export default () => {
                     </div>
 
                     <ul className="hotels-list">
-                        {filteredHotels.map(({id, name, address, city, hotel_rating, phone_number, imgUrl}) => (
-                            <li key={id} className='hotels-item'>
-                                <div className="hotels-item-img"><img className="" alt="hotel-img" src={imgUrl} /></div>
-                                <div>
-                                    <h4 className="hotels-item-title">{name}</h4>
-                                    <div>Address: {address} </div>
-                                    <div>City: {city} </div>
-                                    <div>Rating: {hotel_rating}</div>
-                                    {phone_number && <div>Phone Number: {phone_number}</div>}
-                                </div>
-                            </li>
-                        ))}
+                        {filteredHotels.map((hotel) => {
+                            const isFavorite = favoritesList.some(favHotel => favHotel.id === hotel.id);
+                            const { id, name, address, city, hotel_rating, phone_number, imgUrl } = hotel;
+
+                            return (
+                                <li key={id} className='hotels-item'>
+                                    <div className="hotels-item-img"><img className="" alt="hotel-img" src={imgUrl} /></div>
+                                    <div className="hotels-item-details"> 
+                                        <div className="hotels-item-text">
+                                            <h4 className="hotels-item-title">{name}</h4>
+                                            <div>Address: {address} </div>
+                                            <div>City: {city} </div>
+                                            <div>Rating: {hotel_rating}</div>
+                                            {phone_number && <div>Phone Number: {phone_number}</div>}
+                                        </div>
+
+                                        <Button
+                                            variant="contained"
+                                            size="small"
+                                            onClick={() => isFavorite ? handleRemoveFavorite(id) : handleAddFavorite(hotel)}
+                                            sx={{
+                                                backgroundColor: isFavorite ? '#aaaaaa' : '#fc9703',
+                                                fontWeight: 'bold',
+                                                '&:hover': {
+                                                    backgroundColor: isFavorite ? '#888888' : '#e08000',
+                                                }
+                                            }}
+                                        >
+                                            {isFavorite ? 'Remove Favorite' : 'Add to Favorites'}
+                                        </Button>
+                                    </div>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </>
             ) : (
                 <h3>Nothing was found for the specified parameters.</h3>
-            )}
+            ))}
 
         </div>
     )

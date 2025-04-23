@@ -8,7 +8,8 @@ export const loadStorageState = () => {
     }
     const parsedState = JSON.parse(serializedState);
     return { 
-      themeState: {isTheme: parsedState.bookingTheme}
+      themeState: {isTheme: parsedState.bookingTheme},
+      favorite: {favoriteList: parsedState.favoriteHotels},
     };
 
   } catch (error) {
@@ -20,7 +21,8 @@ export const loadStorageState = () => {
 export const saveStorageState = (state) => { 
   try {
     const stateToSave = { 
-      bookingTheme: state.themeState.isTheme
+      bookingTheme: state.themeState.isTheme,
+      favoriteHotels: state.favorite.favoriteList
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
   } catch (error) {

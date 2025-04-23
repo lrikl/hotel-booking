@@ -11,7 +11,9 @@ import {
     MenuItem, 
     FormControl,
     InputLabel,  
-    FormHelperText, 
+    FormHelperText,
+    Grid,
+    CircularProgress, 
 } from '@mui/material';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -27,6 +29,7 @@ import './home.scss';
 export default () => {
     const navigate = useNavigate();
     const destinationList = useSelector(state => state.destination.list)
+    const isLoading = useSelector(state => state.destination.isLoading)
     const dispatch = useDispatch();
 
     const initialValues = {  // початкові значення для Formik, стан зберігається всередені форміка, доступ отримаємо через рендер-проп {(formik) => ...}
@@ -106,139 +109,148 @@ export default () => {
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <div className="hotels-filter">
-                <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={searchSubmit}
-                    validateOnChange={true}
-                    validateOnBlur={true} 
-                >
-                    {(formik) => { // рендер-функція Formik, що надає доступ до стану форми {} formik
-                        const { touched, errors, values } = formik;
+            {isLoading ? (
+                <Grid container justifyContent="center" sx={{ mt: 2 }}>
+                    <CircularProgress sx={{color: '#fc9703'}} />
+                </Grid>
 
-                        return (
-                        <Form className="hotels-form">
-                            <FormControl
-                                className="form-main-field"
-                                error={touched.selectedCity && Boolean(errors.selectedCity)} 
-                            >
-                                <InputLabel id="city-select-label">Destination</InputLabel>
-                                <Field
-                                    name="selectedCity" 
-                                    as={Select}       // as= зв'язка з компонентом mui
-                                    labelId="city-select-label"
-                                    label="Destination"
-                                    
-                                >
-                                    {destinationList.map(({ value, label }) => (
-                                        <MenuItem key={value} value={label}>{label}</MenuItem>
-                                    ))}
-                                </Field>
-                                <FormHelperText>
-                                    {touched.selectedCity && errors.selectedCity}
-                                </FormHelperText>
-                            </FormControl>
+            ) : (
+                <>
+                    <div className="hotels-filter">
+                        <Formik
+                            initialValues={initialValues}
+                            validationSchema={validationSchema}
+                            onSubmit={searchSubmit}
+                            validateOnChange={true}
+                            validateOnBlur={true} 
+                        >
+                            {(formik) => { // рендер-функція Formik, що надає доступ до стану форми {} formik
+                                const { touched, errors, values } = formik;
 
-                            <DatePicker
-                                label="Check In"
-                                value={values.checkInDate}
-                                onChange={(newValue) => formik.setFieldValue('checkInDate', newValue)}
-                                minDate={dayjs().startOf('day')} // min дата сьогодні
-                                slotProps={{
-                                    textField: {
-                                        className: "form-main-field", 
-                                        name: "checkInDate", 
-                                        error: touched.checkInDate && Boolean(errors.checkInDate),
-                                        helperText: touched.checkInDate && errors.checkInDate,
-                                        onBlur: () => formik.setFieldTouched('checkInDate', true), 
-                                    },
-                                }}
-                            />
+                                return (
+                                <Form className="hotels-form">
+                                    <FormControl
+                                        className="form-main-field"
+                                        error={touched.selectedCity && Boolean(errors.selectedCity)} 
+                                    >
+                                        <InputLabel id="city-select-label">Destination</InputLabel>
+                                        <Field
+                                            name="selectedCity" 
+                                            as={Select}       // as= зв'язка з компонентом mui
+                                            labelId="city-select-label"
+                                            label="Destination"
+                                            
+                                        >
+                                            {destinationList.map(({ value, label }) => (
+                                                <MenuItem key={value} value={label}>{label}</MenuItem>
+                                            ))}
+                                        </Field>
+                                        <FormHelperText>
+                                            {touched.selectedCity && errors.selectedCity}
+                                        </FormHelperText>
+                                    </FormControl>
 
-                            <DatePicker
-                                label="Check Out"
-                                value={values.checkOutDate}
-                                onChange={(newValue) => formik.setFieldValue('checkOutDate', newValue)}
-                                minDate={values.checkInDate ? dayjs(values.checkInDate).add(1, 'day') : dayjs().startOf('day').add(1, 'day')} //min дата завтра від checkInDate
-                                slotProps={{
-                                    textField: {
-                                        className: "form-main-field",
-                                        name: "checkOutDate",
-                                        error: touched.checkOutDate && Boolean(errors.checkOutDate),
-                                        helperText: touched.checkOutDate && errors.checkOutDate,
-                                        onBlur: () => formik.setFieldTouched('checkOutDate', true),
-                                    },
-                                }}
+                                    <DatePicker
+                                        label="Check In"
+                                        value={values.checkInDate}
+                                        onChange={(newValue) => formik.setFieldValue('checkInDate', newValue)}
+                                        minDate={dayjs().startOf('day')} // min дата сьогодні
+                                        slotProps={{
+                                            textField: {
+                                                className: "form-main-field", 
+                                                name: "checkInDate", 
+                                                error: touched.checkInDate && Boolean(errors.checkInDate),
+                                                helperText: touched.checkInDate && errors.checkInDate,
+                                                onBlur: () => formik.setFieldTouched('checkInDate', true), 
+                                            },
+                                        }}
+                                    />
 
-                            />
+                                    <DatePicker
+                                        label="Check Out"
+                                        value={values.checkOutDate}
+                                        onChange={(newValue) => formik.setFieldValue('checkOutDate', newValue)}
+                                        minDate={values.checkInDate ? dayjs(values.checkInDate).add(1, 'day') : dayjs().startOf('day').add(1, 'day')} //min дата завтра від checkInDate
+                                        slotProps={{
+                                            textField: {
+                                                className: "form-main-field",
+                                                name: "checkOutDate",
+                                                error: touched.checkOutDate && Boolean(errors.checkOutDate),
+                                                helperText: touched.checkOutDate && errors.checkOutDate,
+                                                onBlur: () => formik.setFieldTouched('checkOutDate', true),
+                                            },
+                                        }}
 
-                            <Field
-                                className="form-field"
-                                as={TextField}
-                                name="numbAdults" 
-                                label="Adults"
-                                type="number"
-                                inputProps={{ min: "1", max: "10" }} 
-                                error={touched.numbAdults && Boolean(errors.numbAdults)}
-                                helperText={touched.numbAdults && errors.numbAdults}
-                            />
+                                    />
 
-                            <Field
-                                className="form-field"
-                                as={TextField}
-                                name="numbChildren"
-                                label="Children"
-                                type="number"
-                                inputProps={{ min: "0", max: "10" }}
-                                error={touched.numbChildren && Boolean(errors.numbChildren)}
-                                helperText={touched.numbChildren && errors.numbChildren}
-                            />
+                                    <Field
+                                        className="form-field"
+                                        as={TextField}
+                                        name="numbAdults" 
+                                        label="Adults"
+                                        type="number"
+                                        inputProps={{ min: "1", max: "10" }} 
+                                        error={touched.numbAdults && Boolean(errors.numbAdults)}
+                                        helperText={touched.numbAdults && errors.numbAdults}
+                                    />
 
-                            <Field
-                                className="form-field"
-                                as={TextField}
-                                name="hotelsRating"
-                                label="Rating from"
-                                type="number"
-                                inputProps={{ min: "1", max: "5", step: "0.1" }}
-                                error={touched.hotelsRating && Boolean(errors.hotelsRating)}
-                                helperText={touched.hotelsRating && errors.hotelsRating}
-                            />
+                                    <Field
+                                        className="form-field"
+                                        as={TextField}
+                                        name="numbChildren"
+                                        label="Children"
+                                        type="number"
+                                        inputProps={{ min: "0", max: "10" }}
+                                        error={touched.numbChildren && Boolean(errors.numbChildren)}
+                                        helperText={touched.numbChildren && errors.numbChildren}
+                                    />
 
-                            <Button
-                                className="form-btn"
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                disabled={!formik.isValid || formik.isSubmitting}
-                                sx={{
-                                    maxHeight: '60px',
-                                    minWidth: '100px',
-                                    background: '#fc9703',
-                                    fontWeight: '600'
-                        
-                                }}
-                            >
-                                SUBMIT
-                            </Button>
+                                    <Field
+                                        className="form-field"
+                                        as={TextField}
+                                        name="hotelsRating"
+                                        label="Rating from"
+                                        type="number"
+                                        inputProps={{ min: "1", max: "5", step: "0.1" }}
+                                        error={touched.hotelsRating && Boolean(errors.hotelsRating)}
+                                        helperText={touched.hotelsRating && errors.hotelsRating}
+                                    />
 
-                        </Form>
-                    )}}
-                </Formik>
-            </div>
+                                    <Button
+                                        className="form-btn"
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary"
+                                        disabled={!formik.isValid || formik.isSubmitting}
+                                        sx={{
+                                            maxHeight: '60px',
+                                            minWidth: '100px',
+                                            background: '#fc9703',
+                                            fontWeight: '600'
+                                
+                                        }}
+                                    >
+                                        SUBMIT
+                                    </Button>
 
-            <section className="home-text">
-                <h2>Travel Whith <span className="orange-color">Booking</span></h2>
-                <p><strong>Planning a trip? Let us make it unforgettable!</strong></p>
-                <p>With <strong>Travel with Booking</strong>, you can:</p>
-                <ul>
-                    <li>🔎 Easily find and book a hotel in the USA</li>
-                    <li>📆 Choose convenient travel dates</li>
-                    <li>🌟 Filter accommodation by rating</li>
-                    <li>🧒 Add preferences for kids or pets — full control</li>
-                </ul>
-            </section>
+                                </Form>
+                            )}}
+                        </Formik>
+                    </div>
+
+                    <section className="home-text">
+                        <h2>Travel Whith <span className="orange-color">Booking</span></h2>
+                        <p><strong>Planning a trip? Let us make it unforgettable!</strong></p>
+                        <p>With <strong>Travel with Booking</strong>, you can:</p>
+                        <ul>
+                            <li>🔎 Easily find and book a hotel in the USA</li>
+                            <li>📆 Choose convenient travel dates</li>
+                            <li>🌟 Filter accommodation by rating</li>
+                            <li>🧒 Add preferences for kids or pets — full control</li>
+                        </ul>
+                    </section>
+                </>
+            )}  
         </LocalizationProvider>
     );
 };

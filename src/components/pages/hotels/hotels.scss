@@ -28,20 +28,34 @@
     border-radius: 8px;
     box-shadow: 0 0 4px rgba(0,0,0,0.4);
     padding: 16px;
+    gap: 16px;
 }
 
 .hotels-item-title {
     font-size: clamp(18px, 2vw, 22px);
-    margin-bottom: 16px;
+    margin: 0 0 16px 0;
     color: var(--dark-color);
 }
 
 .hotels-item-img {
     height: 240px;
+    flex-shrink: 0;
 }
 
 .hotels-item-img img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.hotels-item,
+.hotels-item-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotels-item-details {
+    height: 100%;
+    justify-content: space-between;
+    gap: 20px;
 }

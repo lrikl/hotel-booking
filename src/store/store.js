@@ -5,6 +5,7 @@ import logger from 'redux-logger';
 import themeState  from '../slices/themeSlice.js';
 import localStorageMiddleware from './middleware/localStorageMiddleware.js';
 import { loadStorageState } from './utils/localStorage.js';
+import favorite from '../slices/favoritesSlice.js';
 
 
 const preloadedState = loadStorageState()
@@ -12,8 +13,9 @@ const preloadedState = loadStorageState()
 export const store = configureStore({
   reducer: {
     hotels: hotelsState, 
+    destination: destinationState,
     themeState,
-    destination: destinationState
+    favorite
   },
   preloadedState,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware).concat(logger), 

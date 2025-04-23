@@ -6,8 +6,11 @@ import {
     Toolbar,
     Tab,
     Box,
+    LikeButton,
     Tabs
 } from '@mui/material';
+
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import "./header.scss";
 
