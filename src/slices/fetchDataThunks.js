@@ -25,10 +25,29 @@ export const fetchBookingData  = createAsyncThunk('data/fetchBookingData', async
             hotel.imgUrl = imgData.hotels.find(({id}) => id === hotel.id)?.imgUrl || '';
         })
 
-        return db;
+        return {
+            hotels: db.hotels,
+            destination: db.destination
+        };
 
     } catch (error) {
         console.error('All fetch data failed: ', error)
         throw error;
     }
-})
+},
+{
+    condition: (_, { getState }) => {  // condition перевіряє, чи потрібно виконувати запит, дивлячись на поточний стан сховища (через getState), щоб уникнути дублювання запитів 
+        const { hotels, destination } = getState(); // getState() повертає весь об'єкт стану Redux. деструктуруємо з нього потрібні слайси
+
+        if (hotels.isLoading || destination.isLoading) {
+            return false; 
+        }
+
+        if (hotels.list.length > 0 || destination.list.length > 0) {
+            return false; 
+        }
+
+        return true; 
+    }
+}
+);

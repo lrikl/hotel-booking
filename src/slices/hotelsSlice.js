@@ -12,7 +12,7 @@ const hotelsSlice = createSlice({
             prevState.isLoading = true;
         });
         builder.addCase(fetchBookingData.fulfilled, (prevState, {payload}) => {
-            prevState.list = payload.hotels;
+            prevState.list = payload?.hotels;
             prevState.isLoading = false;
         });
     }

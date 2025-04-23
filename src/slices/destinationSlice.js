@@ -12,7 +12,7 @@ const destinationSlice = createSlice({
             prevState.isLoading = true;
         });
         builder.addCase(fetchBookingData.fulfilled, (prevState, {payload}) => {
-            prevState.list = payload.destination;
+            prevState.list = payload?.destination;
             prevState.isLoading = false;
         });
     }
