@@ -1,25 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBookingData } from "../../../slices/fetchDataThunks.js";
-import { useSearchParams } from 'react-router-dom'; 
+import { useNavigate, useSearchParams } from 'react-router-dom'; 
 
 import "./hotels.scss";
 
 export default () => {
 
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
     const [filteredHotels, setFilteredHotels] = useState([]);
 
     const hotelsList = useSelector(state => state.hotels.list)
     const dispatch = useDispatch();
 
+    // валідація параметрів пошуку------
+    const validateDate = (dateString) => {
+        if (!dateString) {
+            return null;
+        }
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return null;
+            }
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        } catch (error) {
+            return null;
+        }
+    };
 
-    const cityName = searchParams.get('city');
-    const checkIn = searchParams.get('checkIn');
-    const checkOut = searchParams.get('checkOut');
-    const adults = searchParams.get('adults');
-    const children = searchParams.get('children');
-    const rating = searchParams.get('rating');
+    const validateInt = (numString) => {
+        if (!numString) {
+            return null;
+        }
+        const num = parseInt(numString, 10);
+        return !isNaN(num) && num >= 0 && num <=10 ? num : null;
+    };
+
+    const validateRating = (numString) => {
+        if (!numString) {
+            return null;
+        }
+        const num = parseFloat(numString);
+        return !isNaN(num) && num >= 1 ? num : null;
+    };
+    // --------
+
+    const validatedParams = useMemo(() => { // useMemo, щоб не перераховувати при кожному рендері, якщо searchParams не змінилися
+        const city = searchParams.get('city')?.trim();
+        const checkIn = validateDate(searchParams.get('checkIn'));
+        const checkOut = validateDate(searchParams.get('checkOut'));
+        const adults = validateInt(searchParams.get('adults'));
+        const children = validateInt(searchParams.get('children'));
+        const rating = validateRating(searchParams.get('rating'));
+
+        if(!city || !checkIn || !checkOut) {
+            console.warn("Required params missing, redirecting...");
+            navigate('/', { replace: true });
+        }
+
+        return { city, checkIn, checkOut, adults, children, rating };
+    }, [searchParams]);
+
+    const { city, checkIn, checkOut, adults, children, rating} = validatedParams;
 
     useEffect(() => {
         dispatch(fetchBookingData());
@@ -30,7 +77,7 @@ export default () => {
         const applyRatingFilter = minRating !== null && !isNaN(minRating);
     
         const results = hotelsList.filter(hotel => {
-            const cityMatch = hotel.city?.toLowerCase() === cityName?.toLowerCase();
+            const cityMatch = hotel.city?.toLowerCase() === city?.toLowerCase();
 
             if (!cityMatch) {
                 return false; 
@@ -48,7 +95,7 @@ export default () => {
     
         setFilteredHotels(results);
     
-    }, [cityName, hotelsList, rating]);
+    }, [city, hotelsList, rating]);
 
     return (
         <div className="hotels-wrap">
@@ -56,7 +103,7 @@ export default () => {
             { filteredHotels.length > 0 ? (
                 <>
                     <div className="hotels-informations">
-                        <h2 className="hotels-title">Hotels in <span className="sity-name">{cityName}</span></h2>
+                        <h2 className="hotels-title">Hotels in <span className="sity-name">{city}</span></h2>
                         <div className="hotels-date">From <span className="orange-color">{checkIn}</span> to <span className="orange-color">{checkOut}</span></div>
                         { adults && <div className="hotels-adults">Adults: <span className="orange-color">{adults}</span></div>}
                         { children && <div className="hotels-children">Children: <span className="orange-color">{children}</span></div>}

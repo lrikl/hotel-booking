@@ -80,14 +80,26 @@ export default () => {
             return;
         }
 
-        const searchParams = new URLSearchParams({
+        const params = {
             city: selectedDestination.label.toLowerCase(),
-            checkIn: dayjs(checkInDate).format('MM/DD/YYYY'),
+            checkIn: dayjs(checkInDate).format('MM/DD/YYYY'), 
             checkOut: dayjs(checkOutDate).format('MM/DD/YYYY'),
-            adults: numbAdults,
-            children: numbChildren,
-            rating: hotelsRating,
-        });
+        };
+        
+
+        if (numbAdults) {
+            params.adults = numbAdults;
+        }
+
+        if(numbChildren) {
+            params.children = numbChildren;
+        }
+
+        if(hotelsRating) {
+            params.rating = hotelsRating;
+        }
+
+        const searchParams = new URLSearchParams(params);
 
         navigate(`/hotels?${searchParams.toString()}`);
     };
