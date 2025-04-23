@@ -5,7 +5,13 @@ const hotelsSlice = createSlice({
     name: 'hotels',
     initialState: {
         list: [],
-        isLoading: false
+        isLoading: false,
+        filteredList: []
+    },
+    reducers: {
+        setFilteredList: (state, action) => {
+            state.filteredList = action.payload;
+        },
     },
     extraReducers: builder => {
         builder.addCase(fetchBookingData.pending, (prevState) => {
@@ -17,5 +23,7 @@ const hotelsSlice = createSlice({
         });
     }
 });
+
+export const { setFilteredList } = hotelsSlice.actions;
 
 export default hotelsSlice.reducer;

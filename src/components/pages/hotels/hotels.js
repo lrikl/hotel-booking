@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBookingData } from "../../../slices/fetchDataThunks.js";
 import { useNavigate, useSearchParams } from 'react-router-dom'; 
+import { setFilteredList } from "../../../slices/hotelsSlice.js";
 
 import "./hotels.scss";
 
@@ -9,8 +10,8 @@ export default () => {
 
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const [filteredHotels, setFilteredHotels] = useState([]);
 
+    const filteredHotels = useSelector(state => state.hotels.filteredList)
     const hotelsList = useSelector(state => state.hotels.list)
     const dispatch = useDispatch();
 
@@ -93,7 +94,7 @@ export default () => {
             return true;
         });
     
-        setFilteredHotels(results);
+        dispatch(setFilteredList(results));
     
     }, [city, hotelsList, rating]);
 
