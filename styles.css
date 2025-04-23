@@ -1,0 +1,234 @@
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/header/header.scss ***!
+  \****************************************************************************************************************************/
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-block-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-round {
+  width: clamp(24px, 4vw, 50px);
+  height: clamp(24px, 4vw, 50px);
+  background-color: var(--orange-color);
+  border-radius: 50%;
+}
+
+.logo-title {
+  color: var(--orange-color);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 900;
+  margin: 0;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/footer/footer.scss ***!
+  \****************************************************************************************************************************/
+.footer {
+  padding: 12px clamp(12px, 2vw, 20px);
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  margin: auto 0 0 0;
+}
+/*!**********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/hotels/hotels.scss ***!
+  \**********************************************************************************************************************************/
+.hotels-title {
+  font-size: clamp(24px, 3vw, 36px);
+  margin-bottom: 8px;
+}
+
+.sity-name {
+  text-transform: capitalize;
+  color: var(--orange-color);
+}
+
+.hotels-informations {
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.hotels-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.hotels-item {
+  width: calc((100% - 40px) / 3);
+  font-size: clamp(12px, 1.5vw, 16px);
+  color: var(--gray-color);
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  gap: 16px;
+}
+
+.hotels-item-title {
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 0 0 16px 0;
+  color: var(--dark-color);
+}
+
+.hotels-item-img {
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.hotels-item-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.hotels-item,
+.hotels-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.hotels-item-details {
+  height: 100%;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .hotels-item {
+    width: calc((100% - 40px) / 2);
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 640px) {
+  .hotels-item {
+    width: 100%;
+  }
+}
+/*!******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/home/home.scss ***!
+  \******************************************************************************************************************************/
+.hotels-form {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 24px;
+  border: 2px solid var(--orange-color);
+  border-radius: 4px;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+}
+
+.form-main-field {
+  max-width: 240px;
+  width: 100%;
+}
+
+.form-field {
+  max-width: 120px;
+  width: 100%;
+}
+
+.home-text {
+  padding: 0 40px;
+}
+
+@media (max-width: 767px) {
+  .hotels-form {
+    flex-direction: column;
+  }
+  .form-main-field,
+  .form-field {
+    max-width: 100%;
+  }
+}
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/style.scss ***!
+  \*********************************************************************************************************/
+:root {
+  --red-color: #fd2727;
+  --white-color: #fff;
+  --black-color: #000;
+  --dark-color: #333;
+  --gray-color: #8a8a8a;
+  --lt-gray-color: #ddd;
+  --orange-color: #fc9703;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  color: var(--dark-color);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.container {
+  max-width: 1520px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(12px, 4vw, 48px);
+  margin: 0 auto;
+}
+
+.main-content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(12px, 4vw, 48px) 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding: unset;
+}
+
+h2 {
+  font-size: clamp(24px, 3vw, 40px);
+  margin: 0 0 clamp(16px, 2vw, 24px);
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.orange-color {
+  color: var(--orange-color);
+}
+
+body.dark-theme {
+  background-color: #333;
+  --dark-color: #fff;
+}
+body.dark-theme .header,
+body.dark-theme .footer {
+  background-color: #484848;
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    padding: 16px 0;
+  }
+  .home-text {
+    padding: 0 16px;
+  }
+}
