@@ -21,14 +21,14 @@ export default () => {
 
   return (
     <Box className="footer" component="footer">
-      <Box display="flex" alignItems="center" justifyContent="space-between" gap={3}>
+      <Box display="flex" alignItems="center" justifyContent="space-between" gap={1}>
         <Box>
           <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Contact Information:</Typography>
           <Grid 
             container 
-            spacing={2} 
+            spacing={1} 
             sx={{
-              p: 2,
+              p: 1,
                 '& .MuiChip-outlined': { 
                   borderColor: '#fc9703',
       

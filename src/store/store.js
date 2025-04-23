@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import hotelsState from '../slices/hotelsSlice.js';
 import destinationState from '../slices/destinationSlice.js';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import themeState  from '../slices/themeSlice.js';
 import localStorageMiddleware from './middleware/localStorageMiddleware.js';
 import { loadStorageState } from './utils/localStorage.js';
@@ -18,7 +18,7 @@ export const store = configureStore({
     favorite
   },
   preloadedState,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware).concat(logger), 
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware), 
 });
 
 export default store;

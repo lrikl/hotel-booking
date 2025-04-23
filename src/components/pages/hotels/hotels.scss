@@ -59,3 +59,18 @@
     justify-content: space-between;
     gap: 20px;
 }
+
+
+@media(max-width: 1023px) {
+    .hotels-item {
+        width: calc((100% - 2 * 20px) / 2);
+        max-width: 360px;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width: 640px) {
+    .hotels-item {
+        width: 100%;
+    }
+}

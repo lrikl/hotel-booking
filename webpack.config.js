@@ -81,7 +81,7 @@ module.exports = {
             ],
         }),
     ],
-    devtool: 'source-map',
+    // devtool: 'source-map',
     optimization: {
         minimizer: [
             new TerserPlugin({

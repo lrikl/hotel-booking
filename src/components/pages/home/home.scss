@@ -22,3 +22,15 @@
 .home-text {
     padding: 0 40px;
 }
+
+
+@media(max-width: 767px) {
+    .hotels-form {
+        flex-direction: column;
+    }
+
+    .form-main-field,
+    .form-field {
+        max-width: 100%;
+    }
+}

@@ -34,19 +34,23 @@ export default () => {
                         value={currentPath}
                         aria-label="primary navigation tabs"
                         indicatorColor="primary"
-                        sx={{
+                        sx={() => ({ 
                             overflow: 'unset',
+                            width: '100%', 
                             '.MuiTabs-indicator': {
                                 display: 'none',
                             },
                             '& .MuiTabs-flexContainer': {
                                 gap: '12px',
-                                justifyContent: { xs: 'center', sm: 'flex-start' },
+                                flexDirection: { xs: 'column', sm: 'row' },
+                                alignItems: { xs: 'center', sm: 'flex-start' },
+                                justifyContent: { sm: 'flex-start' },
+                                width: '100%', 
                             },
                             '.MuiTabs-scroller': {
                                 overflow: 'visible !important',
                             }
-                        }}
+                        })}
                     >
                         {navItems.map(({textNav, path}) => (
                             <Tab
@@ -77,12 +81,9 @@ export default () => {
                                         backgroundColor:'rgb(255, 179, 64)', 
                                         color: theme.palette.mode === 'dark' ? '#000000' : '#FFFFFF',
                                     },
-
-                                     '@media (max-width:767px)': {
-                                        fontSize: '14px', 
-                                        width: { xs: '100%', sm: 'auto'}, 
-                                        maxWidth: { xs: '280px', sm: 'none' } 
-                                    }
+                                    '@media (max-width:600px)': {
+                                            width: '100%'
+                                        }
                                 })}
                             />
                         ))}

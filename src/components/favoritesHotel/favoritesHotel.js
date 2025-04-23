@@ -26,7 +26,7 @@ export default () => {
                 {favoritesList.length > 1 && (
                     <Button
                         variant="contained"
-                        size="large"
+                        size="small"
                         onClick={handleRemoveAll}
                         sx={{
                             backgroundColor: '#fc9703', 

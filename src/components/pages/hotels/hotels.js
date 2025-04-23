@@ -63,15 +63,17 @@ export default () => {
         const children = validateInt(searchParams.get('children'));
         const rating = validateRating(searchParams.get('rating'));
 
-        if(!city || !checkIn || !checkOut) {
-            console.warn("Required params missing, redirecting...");
-            navigate('/', { replace: true });
-        }
-
         return { city, checkIn, checkOut, adults, children, rating };
     }, [searchParams]);
 
     const { city, checkIn, checkOut, adults, children, rating} = validatedParams;
+
+    useEffect(() => {
+        if (!city || !checkIn || !checkOut) {
+            console.warn("Required params missing or invalid, redirecting...");
+            navigate('/', { replace: true });
+        }
+    }, [city, checkIn, checkOut]);
 
     useEffect(() => {
         dispatch(fetchBookingData());

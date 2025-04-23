@@ -16,15 +16,15 @@
 }
 
 .logo-round {
-  width: 50px;
-  height: 50px;
+  width: clamp(24px, 4vw, 50px);
+  height: clamp(24px, 4vw, 50px);
   background-color: var(--orange-color);
   border-radius: 50%;
 }
 
 .logo-title {
   color: var(--orange-color);
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(22px, 3vw, 32px);
   font-weight: 900;
   margin: 0;
 }
