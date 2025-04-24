@@ -43,7 +43,7 @@ export const fetchBookingData  = createAsyncThunk('data/fetchBookingData', async
             return false; 
         }
 
-        if (hotels.list.length > 0 || destination.list.length > 0) {
+        if (hotels.list.length > 0 && destination.list.length > 0) {
             return false; 
         }
 

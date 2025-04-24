@@ -246,7 +246,7 @@ export default () => {
                             <li>🔎 Easily find and book a hotel in the USA</li>
                             <li>📆 Choose convenient travel dates</li>
                             <li>🌟 Filter accommodation by rating</li>
-                            <li>🧒 Add preferences for kids or pets — full control</li>
+                            <li>🧒 Add the number of adults or children - full control</li>
                         </ul>
                     </section>
                 </>

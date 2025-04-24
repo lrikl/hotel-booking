@@ -11,6 +11,7 @@ import Hotels from './components/pages/hotels/hotels.js';
 import Home from './components/pages/home/home.js';
 import About from './components/pages/about/about.js';
 import Favorites  from './components/favoritesHotel/favoritesHotel.js';
+import NotFoundPage from './components/NotFoundPage.js';
 
 import './style.scss';
 
@@ -18,7 +19,7 @@ export const menuItems = [
     { path: '/', index: true, textNav: 'Home', component: <Home />, isMenuItem: true },
     { path: '/favorites', textNav: 'Favorites', component: <Favorites />, isMenuItem: true },
     { path: '/about', textNav: 'About', component: <About />, isMenuItem: true },
-    { path: '/hotels', textNav: 'Hotels', component: <Hotels />, isMenuItem: false }
+    { path: '/hotels', textNav: 'Hotels', component: <Hotels />, isMenuItem: false },
 ];
 
 const router = createHashRouter([
@@ -34,7 +35,7 @@ const router = createHashRouter([
 
             {
                 path: "*",
-                element: <div>404 Not Found</div>
+                element: <NotFoundPage />
             }
         ]
     }
