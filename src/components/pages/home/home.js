@@ -28,8 +28,8 @@ import './home.scss';
 
 export default () => {
     const navigate = useNavigate();
-    const destinationList = useSelector(state => state.destination.list)
-    const isLoading = useSelector(state => state.destination.isLoading)
+    const destinationList = useSelector(state => state.destination.list);
+    const isLoading = useSelector(state => state.destination.isLoading);
     const dispatch = useDispatch();
 
     const initialValues = {  // початкові значення для Formik, стан зберігається всередені форміка, доступ отримаємо через рендер-проп {(formik) => ...}

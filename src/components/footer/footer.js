@@ -6,7 +6,7 @@ import {
   Box,
   Switch
 } from "@mui/material";
-import { Email, Phone, GitHub } from "@mui/icons-material";
+import { Email, Phone, GitHub, LinkedIn } from "@mui/icons-material";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme, toggleTheme } from '../../slices/themeSlice.js';
 
@@ -67,6 +67,15 @@ export default () => {
                 clickable 
                 variant="outlined" />
             </Grid>
+            <Grid>
+              <Chip icon={<LinkedIn />} 
+                label="LinkedIn" 
+                target="_blank" 
+                component="a"
+                href="https://www.linkedin.com/in/yaroslav-tikhomyrov-595446335/" 
+                clickable 
+                variant="outlined" />
+              </Grid>
           </Grid>
         </Box>
         <Box display="flex" alignItems="center" gap={1}>
